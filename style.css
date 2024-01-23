@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+}
+
+/* anchor/link tag curson pointer */
+a{
+    cursor: pointer;
+    text-decoration: none;
+    
+}
+
+/* removing the number cield icon */
+.no-spinner::-webkit-inner-spin-button,
+    .no-spinner::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .no-spinner {
+      -moz-appearance: textfield;
+    }
+
+/*  container-fluid */
+.bg-blackish{
+    background-color: rgba(66, 63, 63, 0.943);
+}
+
+/* user logo images */
+.img-size{
+    height: 2rem;
+    /* width: 100%; */
+}
+
+/* User Image */
+.img-size-user{
+    height: 30em;
+}
+
+
+/*  */
+.h-90{
+    height: 90%;
+
+}
+
+/* footer height */
+.foot-h-300px{
+    height: 220px;
+}
+/* media query for responsive footer height */
+@media (max-width: 768px){
+    .foot-h-300px{
+        height: auto;
+    }
+}
+
+/* text stroke */
+.text-stroke{
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+}
+
+/* text line height shrink */
+.text-bind{
+    margin-top: -0.5rem;
+}
+
+/* text color */
+.text-style{
+    color: rgba(15, 219, 234, 0.795);
+}
+
+/* display none other body section */
+#project{
+    display: none;
+}
+
+#about{
+    display: none;
+}
+
+.dShow{
+    display: none;
+}
+
+@media (max-width:768px) {
+    .dShow{
+        display: block;
+    }
+
+
+}
