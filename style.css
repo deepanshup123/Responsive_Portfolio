@@ -60,6 +60,9 @@ a{
     .foot-h-300px{
         height: auto;
     }
+    .img-size-user{
+        height: 20em;
+    }
 }
 
 /* text stroke */
