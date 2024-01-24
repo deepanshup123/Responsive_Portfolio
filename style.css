@@ -101,3 +101,18 @@ a{
 
 
 }
+
+
+/* project section */
+@media (max-width : 768px){
+    .for-visible{
+        display: none;
+    }
+}
+
+#project2{
+    display: none;
+}
+#project3{
+    display: none;
+}
