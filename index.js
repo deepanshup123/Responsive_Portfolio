@@ -108,3 +108,90 @@ forWidthResponsive.addEventListener('click', (value) => {
         }
     }
 })
+
+
+// for animation through canvas
+
+let canvas = document.getElementById("canvas")
+let ctx = canvas.getContext("2d")
+canvas.height = window.innerHeight
+canvas.width = window.innerWidth
+
+let particlesArray = []
+
+window.addEventListener("resize", function(){
+    canvas.height = window.innerHeight
+    canvas.width = window.innerWidth
+})
+
+const mouse = {
+    x : undefined,
+    y : undefined,
+}
+class Particles{
+    constructor(){
+        // this.x = mouse.x,
+        // this.y = mouse.y,
+        this.x = Math.random() * canvas.width,
+        this.y = Math.random() * canvas.height,
+        this.size = Math.floor(Math.random() * 15 + 1)
+        this.sppedx = Math.floor(Math.random() * 3 - 1.5)
+        this.sppedy = Math.floor(Math.random() * 3 - 1.5)
+    }
+
+    update(){
+        this.x += this.sppedx
+        this.y += this.sppedy
+        if(this.size > 0.2) this.size -= 0.1
+    }
+
+    draw(){
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+        gradient.addColorStop(0, "gold");
+        gradient.addColorStop(0.2, "orange");
+        gradient.addColorStop(0.4, "red");
+        gradient.addColorStop(0.6, "magenta");
+        gradient.addColorStop(0.8, "purple");
+        gradient.addColorStop(1, "blue");
+        ctx.fillStyle = gradient
+        ctx.beginPath()
+        ctx.lineWidth = 2
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+        ctx.fill()
+    }
+}
+
+function updatingParticlesArray(){
+    for (let i = 0; i < 200; i++) {
+        particlesArray.push(new Particles())        
+    }
+}
+updatingParticlesArray()
+
+function handleParticles(){
+    for (let i= 0; i< particlesArray.length; i++) {
+        particlesArray[i].update()
+        particlesArray[i].draw()
+        if (particlesArray[i].size <= 0.3) {
+            particlesArray.splice(i, 1)
+            i--
+        }
+    }
+}
+
+function AfterAnimation(){
+    if (particlesArray.length == 0) {
+        let mainContainer = document.getElementById("main-container")
+        mainContainer.style.display = "block"
+        canvas.style.display = "none"
+    }
+}
+
+function animate(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    handleParticles()
+    AfterAnimation()
+    requestAnimationFrame(animate)
+    
+}
+animate()
